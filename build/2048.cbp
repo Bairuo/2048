@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="2048" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../bin/Debug/2048" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../bin/Debug/" />
+				<Option object_output="../obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../bin/Release/2048" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../bin/Release/" />
+				<Option object_output="../obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="../include" />
+		</Compiler>
+		<Linker>
+			<Add library="../lib/glew32s.lib" />
+			<Add library="../lib/libglfw3dll.lib" />
+			<Add library="../lib/OPENGL32.LIB" />
+			<Add library="../lib/freetype.lib" />
+		</Linker>
+		<Unit filename="../src/2048.cpp" />
+		<Unit filename="../src/AI.cpp" />
+		<Unit filename="../src/AI.h" />
+		<Unit filename="../src/AlignedText.cpp" />
+		<Unit filename="../src/AlignedText.h" />
+		<Unit filename="../src/Animation.cpp" />
+		<Unit filename="../src/Animation.h" />
+		<Unit filename="../src/AnswerNode.cpp" />
+		<Unit filename="../src/AnswerNode.h" />
+		<Unit filename="../src/Board.cpp" />
+		<Unit filename="../src/Board.h" />
+		<Unit filename="../src/BoardRecord.cpp" />
+		<Unit filename="../src/BoardRecord.h" />
+		<Unit filename="../src/Button.cpp" />
+		<Unit filename="../src/Button.h" />
+		<Unit filename="../src/Card.cpp" />
+		<Unit filename="../src/Card.h" />
+		<Unit filename="../src/Color.cpp" />
+		<Unit filename="../src/Color.h" />
+		<Unit filename="../src/ConfigUtilities.cpp" />
+		<Unit filename="../src/ConfigUtilities.h" />
+		<Unit filename="../src/Frame.cpp" />
+		<Unit filename="../src/Frame.h" />
+		<Unit filename="../src/GameManager.cpp" />
+		<Unit filename="../src/GameManager.h" />
+		<Unit filename="../src/GameTime.cpp" />
+		<Unit filename="../src/GameTime.h" />
+		<Unit filename="../src/GameUtilities.cpp" />
+		<Unit filename="../src/GameUtilities.h" />
+		<Unit filename="../src/InputText.cpp" />
+		<Unit filename="../src/InputText.h" />
+		<Unit filename="../src/KeyUtilities.cpp" />
+		<Unit filename="../src/KeyUtilities.h" />
+		<Unit filename="../src/Player.cpp" />
+		<Unit filename="../src/Player.h" />
+		<Unit filename="../src/PlayerRecord.cpp" />
+		<Unit filename="../src/PlayerRecord.h" />
+		<Unit filename="../src/Posture.cpp" />
+		<Unit filename="../src/Posture.h" />
+		<Unit filename="../src/Rectangle.cpp" />
+		<Unit filename="../src/Rectangle.h" />
+		<Unit filename="../src/Shader.cpp" />
+		<Unit filename="../src/Shader.h" />
+		<Unit filename="../src/Text.cpp" />
+		<Unit filename="../src/Text.h" />
+		<Unit filename="../src/TextRenderer.cpp" />
+		<Unit filename="../src/TextRenderer.h" />
+		<Unit filename="../src/VirtualBoard.cpp" />
+		<Unit filename="../src/VirtualBoard.h" />
+		<Unit filename="../src/bairuofunctions.cpp" />
+		<Unit filename="../src/bairuofunctions.h" />
+		<Unit filename="../src/property.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
