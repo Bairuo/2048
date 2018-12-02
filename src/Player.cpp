@@ -48,6 +48,7 @@ void Player::StartAI(Board *board)
     state = Auto;
 
     ai.reset(new AI(board));
+
     ai->StartSearch(board);
 }
 

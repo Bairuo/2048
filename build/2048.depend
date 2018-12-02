@@ -1685,7 +1685,7 @@
 	"InputText.h"
 	"Rectangle.h"
 
-1543176865 source:d:\jzr\2048\src\player.cpp
+1543722252 source:d:\jzr\2048\src\player.cpp
 	"Player.h"
 	"AI.h"
 	"Board.h"
@@ -1708,7 +1708,7 @@
 1543213696 source:d:\jzr\2048\src\shader.cpp
 	"Shader.h"
 
-1543266562 source:d:\jzr\2048\src\text.cpp
+1543720577 source:d:\jzr\2048\src\text.cpp
 	"Text.h"
 	"Animation.h"
 
@@ -1726,7 +1726,7 @@
 	<cstdio>
 	<iostream>
 
-1543176865 source:d:\jzr\2048\src\virtualboard.cpp
+1543722076 source:d:\jzr\2048\src\virtualboard.cpp
 	"VirtualBoard.h"
 	"Board.h"
 	"Card.h"

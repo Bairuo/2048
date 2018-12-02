@@ -48,7 +48,7 @@ void VirtualBoard::DeletePool()
     if(virBoardPool != nullptr)
     {
         delete[] virBoardPool;
-        virBoardPool = 0;
+        virBoardPool = nullptr;
         virBoardPoolPointer = 0;
     }
 }

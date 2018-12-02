@@ -36,8 +36,14 @@ AI::AI(Board *board)
     VirtualBoard::InitPool();
 }
 
+#include<iostream>
+
 AI::~AI()
 {
+    // searchThread can not release automatically
+    // because pool must delete later
+    searchThread.reset();
+
     if(pool != nullptr)
     {
         delete[] pool;
