@@ -22,7 +22,7 @@ static const Color losepenColor(0.464f, 0.43f, 0.395f, 1.0f);
 
 void GameManager::StartPlayBackAnimation(Board *board)
 {
-    curtain.reset(new Rectangle(board->pos, loseColor, Color(0, 0, 0, 0), board->radius, board->width, board->height));
+    curtain.reset(new Rectangle(board->posture().transVec3, loseColor, Color(0, 0, 0, 0), board->radius, board->posture().getScaleX(), board->posture().getScaleY()));
 
     curtain->animation.reset(new Animation());
     curtain->animation->addFrame(0, curtain->posture, Color(loseColor.r, loseColor.g, loseColor.b, 0.6f));
@@ -30,7 +30,7 @@ void GameManager::StartPlayBackAnimation(Board *board)
     curtain->animation->addFrame(3.0f, curtain->posture, Color(loseColor.r, loseColor.g, loseColor.b, 0));
     curtain->animation->Start();
 
-    text.reset(new Text("History play back", board->pos, losepenColor, 51));
+    text.reset(new Text("History play back", board->posture().transVec3, losepenColor, 51));
 
     text->animation.reset(new Animation());
     text->animation->addFrame(0, text->posture, Color(losepenColor.r, losepenColor.g, losepenColor.b, 0));
@@ -70,8 +70,8 @@ void GameManager::ShowRanking()
                             glm::vec3(0, y, 0), noteColor, 32));
 
         ranks[i]->animation.reset(new Animation());
-        ranks[i]->animation->addFrame(t, Posture(1.2f, y, ranks[i]->posture.z, 1), noteColor);
-        ranks[i]->animation->addFrame(t + 1, Posture(0, y, ranks[i]->posture.z, 1), noteColor);
+        ranks[i]->animation->addFrame(t, Posture(1.2f, y, ranks[i]->posture.getPosZ(), 1), noteColor);
+        ranks[i]->animation->addFrame(t + 1, Posture(0, y, ranks[i]->posture.getPosZ(), 1), noteColor);
         ranks[i]->animation->Start();
     }
 }
@@ -102,7 +102,7 @@ void GameManager::StartInput()
 
     inputField.reset(new InputText("", glm::vec3(0, 0, 0), noteColor, 38));
 
-    inputField->cursor->animation = InputText::MakeCurosAnimation(inputField->cursor->posture, noteColor, 1);
+    inputField->generateCurosAnimation(noteColor, 1);
 }
 
 std::string GameManager::GetInput()
@@ -152,7 +152,7 @@ void GameManager::StartGame(Board *board)
 void GameManager::WinGame(Board *board)
 {
     isGameWin = true;
-    curtain.reset(new Rectangle(board->pos, winColor, Color(0, 0, 0, 0), board->radius, board->width, board->height));
+    curtain.reset(new Rectangle(board->posture().transVec3, winColor, Color(0, 0, 0, 0), board->radius, board->posture().getScaleX(), board->posture().getScaleY()));
 
     curtain->animation.reset(new Animation());
     curtain->animation->setStartTime(winLoseDelayed);
@@ -160,7 +160,7 @@ void GameManager::WinGame(Board *board)
     curtain->animation->addFrame(0.5f, curtain->posture, Color(winColor.r, winColor.g, winColor.b, 0.5f));
     curtain->animation->Start();
 
-    text.reset(new Text("You win!", board->pos, winpenColor, 68));
+    text.reset(new Text("You win!", board->posture().transVec3, winpenColor, 68));
 
     text->animation.reset(new Animation());
     text->animation->setStartTime(winLoseDelayed);
@@ -174,7 +174,7 @@ void GameManager::WinGame(Board *board)
 void GameManager::LoseGame(Board *board)
 {
     isGameLose = true;
-    curtain.reset(new Rectangle(board->pos, loseColor, Color(0, 0, 0, 0), board->radius, board->width, board->height));
+    curtain.reset(new Rectangle(board->posture().transVec3, loseColor, Color(0, 0, 0, 0), board->radius, board->posture().getScaleX(), board->posture().getScaleY()));
 
     curtain->animation.reset(new Animation());
     curtain->animation->setStartTime(winLoseDelayed);
@@ -182,7 +182,7 @@ void GameManager::LoseGame(Board *board)
     curtain->animation->addFrame(0.5f, curtain->posture, Color(loseColor.r, loseColor.g, loseColor.b, 0.5f));
     curtain->animation->Start();
 
-    text.reset(new Text("Game Over", board->pos, losepenColor, 68));
+    text.reset(new Text("Game Over", board->posture().transVec3, losepenColor, 68));
 
     text->animation.reset(new Animation());
     text->animation->setStartTime(winLoseDelayed);

@@ -67,8 +67,8 @@ void Board::GetCardNumberCoord(int num, int &get_i, int &get_j)
 
 void Board::GetCardCoord(int i, int j, float &x, float &y)
 {
-    float x0 = pos().x - realWidth / 2;
-    float y0 = pos().y + realHeight / 2;
+    float x0 = posture().getPosX() - realWidth / 2;
+    float y0 = posture().getPosY() + realHeight / 2;
     float halfWidth = realWidth / cardNum / 2;
     float halfHeight = realHeight / cardNum / 2;
 
@@ -87,7 +87,9 @@ void Board::MakeCard(int i, int j, int score)
     cards[i][j] = new Card(score, glm::vec3(x, y, 0), Color(0, 0, 0, 0), cardWidth, cardHeight);
 
     if(score > maxScore)
+    {
         maxScore = score;
+    }
 
     idle--;
 }
@@ -142,9 +144,13 @@ int Board::Refresh()
 int Board::Fill()
 {
     if(lastMerged)
+    {
         return Refresh(moveTime + c_mergeBornTime * 0.5f, c_refreshTime, 0.75f);
+    }
     else
+    {
         return Refresh(moveTime, c_refreshTime, 0.75f);
+    }
 }
 
 void Board::RecordHistory(int freshPoint, int operate)

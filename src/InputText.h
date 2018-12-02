@@ -21,17 +21,6 @@ public:
     int size;
     boost::shared_ptr<Rectangle> cursor;
 
-    property_rw<glm::vec4> pos = property_rw<glm::vec4>(
-        property_set(glm::vec4)
-        {
-            posture = Posture(value.x, value.y, value.z, 1);
-        },
-        property_get(glm::vec4)
-        {
-            return posture.GetMatrix() * _pos;
-        }
-    );
-
     property_rw<std::string> text = property_rw<std::string>(
         property_set(std::string)
         {
@@ -41,11 +30,11 @@ public:
 
             shift.y = textRenderer->GetTexHeight(_text, size, true) * 0.74f / 2;
 
-            glm::vec3 cursorPos = glm::vec3(pos().x + shift.x - cursorWight / 2, pos().y - cursorShift, pos().z);
+            glm::vec3 cursorPos = glm::vec3(posture.getPosX() + shift.x - cursorWight / 2, posture.getPosY() - cursorShift, posture.getPosZ());
 
             if(cursor != nullptr)
             {
-                cursor->posture = Posture(cursorPos, 1);
+                cursor->posture = Posture(cursorPos, cursor->posture().scaleVec3);
 
                 if(cursor->animation != nullptr)
                 {
@@ -66,7 +55,7 @@ public:
 
     InputText(const std::string &text, const glm::vec3 &pos, const Color &color, int size);
 
-    static boost::shared_ptr<Animation> MakeCurosAnimation(const Posture &posture, const Color &color, float time);
+    void generateCurosAnimation(const Color &color, float time);
 
 private:
     TextRenderer *textRenderer;
@@ -77,7 +66,6 @@ private:
     float cursorHeight;
 
     std::string _text;
-    glm::vec4 _pos = glm::vec4(0, 0, 0, 1);
 };
 
 #endif // INPUTTEXT_H_

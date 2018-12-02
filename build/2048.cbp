@@ -91,7 +91,12 @@
 		<Unit filename="../src/VirtualBoard.h" />
 		<Unit filename="../src/bairuofunctions.cpp" />
 		<Unit filename="../src/bairuofunctions.h" />
+		<Unit filename="../src/basicrender.cpp" />
+		<Unit filename="../src/basicrender.h" />
 		<Unit filename="../src/property.h" />
+		<Unit filename="res/rounded.frag" />
+		<Unit filename="res/standard.frag" />
+		<Unit filename="res/standard.vs" />
 		<Extensions>
 			<code_completion />
 			<envvars />

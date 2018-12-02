@@ -7,12 +7,11 @@ InputText::~InputText()
 }
 
 InputText::InputText(const std::string &text, const glm::vec3 &pos, const Color &color, int size)
+    :posture(pos, 1),
+     color(color),
+     size(size)
 {
     textRenderer = TextRenderer::GetInstance();
-
-    this->pos = glm::vec4(pos, 1);
-    this->color = color;
-    this->size = size;
 
     cursorWight = textRenderer->GetCharWidth('a', size, true);
     cursorHeight = cursorWight * 0.31f;
@@ -24,17 +23,18 @@ InputText::InputText(const std::string &text, const glm::vec3 &pos, const Color 
     this->text = text;
 }
 
-boost::shared_ptr<Animation> InputText::MakeCurosAnimation(const Posture &posture, const Color &color, float time)
+void InputText::generateCurosAnimation(const Color &color, float time)
 {
     boost::shared_ptr<Animation> cursorAnimation(new Animation());
     cursorAnimation->setStartTime(time);
     cursorAnimation->setLoop(true);
-    cursorAnimation->addFrame(0, posture, Color(color.r, color.g, color.b, 1));
-    cursorAnimation->addFrame(0.6f, posture, Color(color.r, color.g, color.b, 1));
-    cursorAnimation->addFrame(0.6f, posture, Color(color.r, color.g, color.b, 0));
-    cursorAnimation->addFrame(1.2f, posture, Color(color.r, color.g, color.b, 0));
+    cursorAnimation->addFrame(0, cursor->posture(), Color(color.r, color.g, color.b, 1));
+    cursorAnimation->addFrame(0.6f, cursor->posture(), Color(color.r, color.g, color.b, 1));
+    cursorAnimation->addFrame(0.6f, cursor->posture(), Color(color.r, color.g, color.b, 0));
+    cursorAnimation->addFrame(1.2f, cursor->posture(), Color(color.r, color.g, color.b, 0));
     cursorAnimation->Start();
-    return cursorAnimation;
+
+    cursor->animation = cursorAnimation;
 }
 
 void InputText::Update()
@@ -44,6 +44,6 @@ void InputText::Update()
         cursor->Update();
     }
 
-    textRenderer->DrawText(text, pos().x - shift.x, pos().y - shift.y, color, size, true);
+    textRenderer->DrawText(text, posture.getPosX() - shift.x, posture.getPosY() - shift.y, color, size, true);
 
 }

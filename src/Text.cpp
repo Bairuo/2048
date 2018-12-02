@@ -7,13 +7,11 @@ Text::~Text()
 }
 
 Text::Text(const std::string &text, const glm::vec3 &pos, const Color &color, int size)
+    :posture(pos, 1),
+     color(color),
+     size(size),
+     textRenderer(TextRenderer::GetInstance())
 {
-    textRenderer = TextRenderer::GetInstance();
-
-    this->pos = glm::vec4(pos, 1);
-    this->color = color;
-    this->size = size;
-
     this->text = text;
 }
 
@@ -34,5 +32,5 @@ void Text::Update()
         }
     }
 
-    textRenderer->DrawText(text, pos().x - shift.x, pos().y - shift.y, color, size, true);
+    textRenderer->DrawText(text, posture.getPosX() - shift.x, posture.getPosY() - shift.y, color, size, true);
 }

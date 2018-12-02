@@ -31,13 +31,11 @@ const GLchar Card::standardFragPath[] = "./res/rounded.frag";
 
 Card::Card(float score, const glm::vec3 &pos, const Color &roundColor, float width, float height,
            const GLchar *vertexPath, const GLchar *fragmentPath
-           ):Rectangle(pos, cardColors.find(score)->second, roundColor, c_cardRadius, width, height, vertexPath, fragmentPath)
+           ):Rectangle(pos, cardColors.find(score)->second, roundColor, c_cardRadius, width, height, vertexPath, fragmentPath),
+             score(score),
+             textRenderer(TextRenderer::GetInstance()),
+             scoreText(bairuo::ToString(score))
 {
-    textRenderer = TextRenderer::GetInstance();
-
-    this->score = score;
-
-    //scoreSize = proportion1 * (width * WindowWidth / 2);
     if(score < 100)
     {
         scoreSize = 68;
@@ -51,8 +49,6 @@ Card::Card(float score, const glm::vec3 &pos, const Color &roundColor, float wid
         scoreSize = 38;
     }
 
-    scoreText = bairuo::ToString(score);
-
     //std::cout << textRenderer->GetTexLength(scoreText, scoreSize, scoreBold) << std::endl;
 
     // A mysterious problem :
@@ -64,6 +60,7 @@ Card::Card(float score, const glm::vec3 &pos, const Color &roundColor, float wid
 //        textShift.x = textRenderer->GetTexLength(scoreText, scoreSize, scoreBold) / 2;
 
     // It seems number after a decimal point fourth will cause vague sometimes
+
     textShift.x = textRenderer->GetTexLength(scoreText, scoreSize, scoreBold) / 2;
     textShift.x = (int)(textShift.x * 10000) * 1.0f / 10000;
 
@@ -89,8 +86,8 @@ void Card::Refresh(float t, float refreshTime, float initialSize)
 
     animation.reset(new Animation());
     animation->setStartTime(t);
-    animation->addFrame(0, Posture(pos, initialSize), color);
-    animation->addFrame(refreshTime, Posture(pos, 1), color);
+    animation->addFrame(0, Posture(posture().transVec3, initialSize * posture().scaleVec3), color);
+    animation->addFrame(refreshTime, Posture(posture().transVec3, posture().scaleVec3), color);
     animation->Start();
 }
 
@@ -103,9 +100,9 @@ void Card::MergeBorn(float t)
 
     animation.reset(new Animation());
     animation->setStartTime(t);
-    animation->addFrame(0, Posture(pos, 1), color);
-    animation->addFrame(c_mergeBornTime * 0.75f, Posture(pos, 1.1f), Color(color().r, color().g, color().b, 0.8f));
-    animation->addFrame(c_mergeBornTime, Posture(pos, 1), color);
+    animation->addFrame(0, Posture(posture().transVec3, posture().scaleVec3), color);
+    animation->addFrame(c_mergeBornTime * 0.75f, Posture(posture().transVec3, 1.1f * posture().scaleVec3), Color(color().r, color().g, color().b, 0.8f));
+    animation->addFrame(c_mergeBornTime, Posture(posture().transVec3, posture().scaleVec3), color);
     animation->Start();
 }
 
@@ -119,8 +116,8 @@ void Card::MoveTo(float x, float y, float t)
     }
 
     animation.reset(new Animation());
-    animation->addFrame(0, Posture(pos, 1), color);
-    animation->addFrame(t, Posture(x, y, pos().z, 1), color);
+    animation->addFrame(0, Posture(posture().transVec3, posture().scaleVec3), color);
+    animation->addFrame(t, Posture(x, y, posture().getPosZ(), posture().scaleVec3), color);
     animation->Start();
 }
 
@@ -161,8 +158,8 @@ void Card::Update()
     //std::cout << pos().x - textRenderer->GetTexLength(scoreText, scoreSize, scoreBold) / 2 << ", " << pos().y - textRenderer->GetTexHeight(scoreText, scoreSize, scoreBold) * 0.74f / 2 << std::endl;
     //std::cout << textRenderer->GetTexLength(scoreText, scoreSize, scoreBold) / 2 << ", " << textRenderer->GetTexHeight(scoreText, scoreSize, scoreBold) * 0.74f / 2 << std::endl;
 
-    if(width > 0)
+    if(posture().getScaleX() > 0)
     {
-        textRenderer->DrawText(scoreText, pos().x - textShift.x, pos().y - textShift.y, scoreColor, scoreSize, scoreBold);
+        textRenderer->DrawText(scoreText, posture().getPosX() - textShift.x, posture().getPosY() - textShift.y, scoreColor, scoreSize, scoreBold);
     }
 }

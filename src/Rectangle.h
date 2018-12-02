@@ -32,19 +32,6 @@ public:
         }
     );
 
-    property_rw<glm::vec3> pos = property_rw<glm::vec3>(
-        property_set(glm::vec3)
-        {
-            _pos = value;
-        },
-        property_get(glm::vec3)
-        {
-            glm::vec4 t = posture().GetMatrix() * glm::vec4(_pos.x, _pos.y, _pos.z, 1);
-
-            return  glm::vec3(t.x, t.y, t.z);
-        }
-    );
-
     property_rw<Color> color = property_rw<Color>(
         property_set(Color)
         {
@@ -56,29 +43,6 @@ public:
             return _color;
         }
     );
-
-    property_rw<float> width = property_rw<float>(
-        property_set(float)
-        {
-            _width = value;
-        },
-        property_get(float)
-        {
-            return _width * posture().scale;
-        }
-    );
-
-    property_rw<float> height = property_rw<float>(
-        property_set(float)
-        {
-            _height = value;
-        },
-        property_get(float)
-        {
-            return _height * posture().scale;
-        }
-    );
-
 
     virtual void Update();
     Rectangle();
@@ -92,21 +56,15 @@ public:
 
 
 private:
-    GLfloat vertices[12];
-    static const GLuint indices[6];
-
-    GLuint VBO, VAO;
-    GLuint EBO;
+    GLuint VAO;
 
     Shader shader;
 
     Color _color;
     Posture _posture;
     glm::vec3 _pos;
-    float _width;
-    float _height;
 
-    bool active = false;
+    bool active = true;
     bool colorChange = false;
     bool postureChange = false;
 

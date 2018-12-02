@@ -54,6 +54,6 @@ void AlignedText::Update()
 {
     Rectangle::Update();
 
-    textRenderer->DrawText(title, pos().x - textRenderer->GetTexLength(title, titleSize, titleBold) / 2, titleHeight, titleColor, titleSize, titleBold);
-    textRenderer->DrawText(value, pos().x - textRenderer->GetTexLength(value, valueSize, valueBold) / 2, valueHeight, valueColor, valueSize, valueBold);
+    textRenderer->DrawText(title, posture().getPosX() - textRenderer->GetTexLength(title, titleSize, titleBold) / 2, titleHeight, titleColor, titleSize, titleBold);
+    textRenderer->DrawText(value, posture().getPosX() - textRenderer->GetTexLength(value, valueSize, valueBold) / 2, valueHeight, valueColor, valueSize, valueBold);
 }

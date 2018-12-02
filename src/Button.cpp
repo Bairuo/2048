@@ -32,9 +32,9 @@ bool Button::isTrigger(double x, double y)
 {
     Button::CoordinateTrans(x, y);
 
-    if(x < pos().x + width / 2 && x > pos().x - width / 2)
+    if(x < posture().getPosX() + posture().getScaleX() / 2 && x > posture().getPosX() - posture().getScaleX() / 2)
     {
-        if(y < pos().y + height / 2 && y > pos().y - height / 2)
+        if(y < posture().getPosY() + posture().getScaleY() / 2 && y > posture().getPosY() - posture().getScaleY() / 2)
         {
             return true;
         }

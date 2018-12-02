@@ -857,7 +857,7 @@
 1540202196 source:d:\jzr\renderer-dev\src\rectangle.cpp
 	"Rectangle.h"
 
-1543213784 source:d:\jzr\2048\src\2048.cpp
+1543268026 source:d:\jzr\2048\src\2048.cpp
 	<iostream>
 	<boost/shared_ptr.hpp>
 	<GL/glew.h>
@@ -936,7 +936,7 @@
 	"Rectangle.h"
 	<list>
 
-1543266894 d:\jzr\2048\src\rectangle.h
+1543719887 d:\jzr\2048\src\rectangle.h
 	<GL/glew.h>
 	<boost/shared_ptr.hpp>
 	"Color.h"
@@ -1478,7 +1478,7 @@
 1519017876 d:\jzr\2048\include\glm\gtc\type_ptr.inl
 	<cstring>
 
-1543219697 d:\jzr\2048\src\posture.h
+1543717604 d:\jzr\2048\src\posture.h
 	<glm/glm.hpp>
 	<glm/gtc/matrix_transform.hpp>
 	<glm/gtc/type_ptr.hpp>
@@ -1597,7 +1597,7 @@
 	<fstream>
 	<vector>
 
-1543266510 d:\jzr\2048\src\text.h
+1543720460 d:\jzr\2048\src\text.h
 	<string>
 	<boost/shared_ptr.hpp>
 	"TextRenderer.h"
@@ -1605,7 +1605,7 @@
 	"property.h"
 	"Color.h"
 
-1543267708 d:\jzr\2048\src\inputtext.h
+1543720379 d:\jzr\2048\src\inputtext.h
 	<boost/shared_ptr.hpp>
 	"TextRenderer.h"
 	"Rectangle.h"
@@ -1628,7 +1628,7 @@
 	<cmath>
 	"time.h"
 
-1543213793 source:d:\jzr\2048\src\alignedtext.cpp
+1543718466 source:d:\jzr\2048\src\alignedtext.cpp
 	"AlignedText.h"
 	"TextRenderer.h"
 	<string>
@@ -1642,7 +1642,7 @@
 1540278400 source:d:\jzr\2048\src\bairuofunctions.cpp
 	"bairuofunctions.h"
 
-1543176865 source:d:\jzr\2048\src\board.cpp
+1543718489 source:d:\jzr\2048\src\board.cpp
 	"Board.h"
 	"Card.h"
 	"BoardRecord.h"
@@ -1653,11 +1653,11 @@
 1540278400 source:d:\jzr\2048\src\boardrecord.cpp
 	"BoardRecord.h"
 
-1543176865 source:d:\jzr\2048\src\button.cpp
+1543718526 source:d:\jzr\2048\src\button.cpp
 	"Button.h"
 	"ConfigUtilities.h"
 
-1543267019 source:d:\jzr\2048\src\card.cpp
+1543719689 source:d:\jzr\2048\src\card.cpp
 	"bairuofunctions.h"
 	"Card.h"
 	"TextRenderer.h"
@@ -1671,7 +1671,7 @@
 1540278400 source:d:\jzr\2048\src\frame.cpp
 	"Frame.h"
 
-1543267784 source:d:\jzr\2048\src\gamemanager.cpp
+1543718748 source:d:\jzr\2048\src\gamemanager.cpp
 	"GameManager.h"
 	"PlayerRecord.h"
 	"Board.h"
@@ -1681,7 +1681,7 @@
 	"bairuofunctions.h"
 	<algorithm>
 
-1543267769 source:d:\jzr\2048\src\inputtext.cpp
+1543719096 source:d:\jzr\2048\src\inputtext.cpp
 	"InputText.h"
 	"Rectangle.h"
 
@@ -1696,13 +1696,14 @@
 1543176865 source:d:\jzr\2048\src\playerrecord.cpp
 	"PlayerRecord.h"
 
-1519434524 source:d:\jzr\2048\src\posture.cpp
+1543717638 source:d:\jzr\2048\src\posture.cpp
 	<iostream>
 	"Posture.h"
 
-1543266870 source:d:\jzr\2048\src\rectangle.cpp
+1543720100 source:d:\jzr\2048\src\rectangle.cpp
 	"Rectangle.h"
 	"ConfigUtilities.h"
+	"basicrender.h"
 
 1543213696 source:d:\jzr\2048\src\shader.cpp
 	"Shader.h"
@@ -1730,7 +1731,7 @@
 	"Board.h"
 	"Card.h"
 
-1543176865 source:d:\jzr\2048\src\animation.cpp
+1543685385 source:d:\jzr\2048\src\animation.cpp
 	<iostream>
 	"Animation.h"
 	"GameTime.h"
@@ -2642,4 +2643,10 @@
 	"KeyUtilities.h"
 	<windows.h>
 	<X11/XKBlib.h>
+
+1543720127 source:d:\jzr\2048\src\basicrender.cpp
+	"basicrender.h"
+
+1543720110 d:\jzr\2048\src\basicrender.h
+	<GL/glew.h>
 

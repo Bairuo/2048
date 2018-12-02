@@ -20,17 +20,6 @@ public:
     Color color;
     int size;
 
-    property_rw<glm::vec4> pos = property_rw<glm::vec4>(
-        property_set(glm::vec4)
-        {
-            posture = Posture(value.x, value.y, value.z, 1);
-        },
-        property_get(glm::vec4)
-        {
-            return posture.GetMatrix() * _pos;
-        }
-    );
-
     property_rw<std::string> text = property_rw<std::string>(
         property_set(std::string)
         {
@@ -54,14 +43,11 @@ public:
 
     Text(const std::string &text, const glm::vec3 &pos, const Color &color, int size);
 
-protected:
+private:
     TextRenderer *textRenderer;
     glm::vec2 shift;
 
-private:
     std::string _text;
-    glm::vec4 _pos = glm::vec4(0, 0, 0, 1);
-
 };
 
 #endif // TEXT_H_

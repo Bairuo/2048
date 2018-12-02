@@ -5,7 +5,9 @@
 Color Animation::getColor() const
 {
     if(timer < 0)
+    {
         return Color(0, 0, 0, 0);
+    }
 
     if(pointer < frames.size() - 1)
     {
@@ -21,7 +23,9 @@ Color Animation::getColor() const
 Posture Animation::getPosture() const
 {
     if(timer < 0)
+    {
         return Posture(frames[pointer].posture.transVec3, 0);
+    }
 
     if(pointer < frames.size() - 1)
     {
